@@ -1,0 +1,59 @@
+
+Node*intersection(Node*head)
+{
+    
+   Node*slow=head;
+   Node*fast=head;
+   if(head->next==NULL)
+   {
+       return NULL;
+   }
+   while(slow!=NULL && fast!=NULL)
+   {
+       fast=fast->next;
+       if(fast!=NULL)
+       {
+           fast=fast->next;
+       }
+       slow=slow->next;
+       
+       if(fast==slow)
+       {
+           return slow;
+       }
+       
+   }
+   return NULL;
+    
+    
+}
+class Solution
+{
+    public:
+     //Function to find first node if the linked list has a loop.
+    int findFirstNode(Node* head)
+    {
+
+
+Node*intersected=intersection(head);
+Node*slow=head;
+
+
+if(intersected==NULL)
+{
+    return -1;
+}
+
+
+
+while(slow!=intersected)
+{
+   slow=slow->next;
+   intersected=intersected->next;
+}
+return slow->data;
+
+    }
+};
+
+      
